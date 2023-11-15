@@ -7,7 +7,8 @@
     - Nice to have when you have many levels with same logic (Like Gameplay levels or something)
 + **How it works?** - It just spawns prefabs of the preselected logic when game starts
 
-> Note: Execution order of placer is **-100**
+> [!NOTE]
+> Execution order of placer is **-100** 
 
 ## Download
 
@@ -23,7 +24,8 @@
 2) Add ```Logic Placer``` to scene, by pressing ```Tools/Scene-LogicConstructor/Add Logic Placer``` or manually add component to new GameObject (if you want multiple placers).
 3) Fill ```Logic``` field in LogicPlacer and you good to go!
 
-> **Tips**<br/>
+> [!NOTE]
+> **Tips:**<br/>
 > 1) You can use multiple placers with different logic presets on same scene.
 > 2) You can change name of the logic root parent in ```Logic Placer```.
 > 3) You can disable parenting of the logic inside ```Template config```.
