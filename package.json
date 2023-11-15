@@ -8,7 +8,7 @@
   "displayName": "Scene-LogicConstructor",
   "description": "Easy scene template placer",
   "unity": "2022.3",
-  "version": "0.1",
+  "version": "0.1.0",
   "keywords": [
     "scene",
     "template",
