@@ -58,7 +58,7 @@ namespace Scene_LogicConstructor.Runtime
     public class LogicBlock : LogicBlockBase
     {
         [SerializeField] private bool                  asDDOL;
-        [SerializeField] private List<LogicBlockChild> child;
+        [SerializeField] private List<LogicBlockChild> child = new();
         
         public override void AfterConstruct(GameObject logic)
         {
