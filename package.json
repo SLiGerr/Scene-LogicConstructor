@@ -1,0 +1,24 @@
+{
+  "name": "com.bolttalking.scenelogiccontainer",
+  "author":
+  {
+    "name": "Bolttalking",
+    "url": "https://t.me/bolttalk"
+  },
+  "displayName": "Scene-LogicConstructor",
+  "description": "Easy scene template placer",
+  "unity": "2022.3",
+  "version": "0.1",
+  "keywords": [
+    "scene",
+    "template",
+    "generation",
+    "prefabs",
+    "convenience"
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SLiGerr/Scene-LogicConstructor.git"
+  }
+}
