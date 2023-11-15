@@ -26,7 +26,7 @@ namespace Scene_LogicConstructor.Runtime
 
         private void RunCallbacks()
         {
-            Debug.Log($"{GetInstanceID()} is min {IsFirstCheck()}");
+            //Debug.Log($"{GetInstanceID()} is min {IsFirstCheck()}");
             if (!IsFirstCheck()) return; //This makes sure that callbacks for all ISceneConstruction will fire only once, even if there is multiple Placers
 
             var callbacks = FindObjectsOfType<MonoBehaviour>().OfType<ISceneConstruction>();
