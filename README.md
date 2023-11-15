@@ -29,4 +29,10 @@
 > 1) You can use multiple placers with different logic presets on same scene.
 > 2) You can change name of the logic root parent in ```Logic Placer```.
 > 3) You can disable parenting of the logic inside ```Template config```.
-> 4) You can receive ```OnConstruction``` callback by adding ```ISceneConstruction``` to scripts inside logic prefabs
+> 4) You can receive ```OnConstruction``` callback by adding ```ISceneConstruction``` to scripts
+
+> [!WARNING]
+> For ```OnConstruction``` callback to work, at least one of placers must be on scene.
+
+## TODO:
+- [ ] Make ```OnConstruction``` callback work without any placers too

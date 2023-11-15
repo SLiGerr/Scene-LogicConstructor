@@ -14,12 +14,12 @@ namespace Scene_LogicConstructor.Editor
             var placer = find != null ? find : new GameObject("Logic-Constructor").AddComponent<LogicPlacer>();
             placer.transform.SetSiblingIndex(0);
 
-            if (placer.IsNotNull) Selection.activeGameObject = placer.gameObject;
-            else
+            if (placer.IsNull)
             {
                 Debug.LogWarning("Please select any logic constructor template");
                 EditorUtility.OpenPropertyEditor(placer);
             }
+            else Selection.activeGameObject = placer.gameObject;
         }
     }
 }

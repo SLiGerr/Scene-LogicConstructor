@@ -9,10 +9,12 @@ namespace Scene_LogicConstructor.Runtime
     [CreateAssetMenu(menuName = "Create Scene-LogicContainer", fileName = "Scene Template", order = 0)]
     public class LogicContainer : ScriptableObject
     {
-        [SerializeField] private List<LogicBlock> blocks;
+        [SerializeField] private List<LogicBlock> blocks = new();
         [SerializeField] private bool             ignoreParent = false;
 
-        public void Construct(GameObject placer, string placerName)
+        public bool IgnoreParent => ignoreParent;
+
+        public void Construct(GameObject placer)
         {
             var parent = ignoreParent ? null : placer.transform;
             for (var i = 0; i < blocks.Count; i++)
@@ -20,9 +22,6 @@ namespace Scene_LogicConstructor.Runtime
                 var block = blocks[i];
                 block.Construct(i, parent);
             }
-
-            if (!ignoreParent) placer.name = placerName;
-            else Destroy(placer);
         }
 
         private void OnValidate()
@@ -45,9 +44,6 @@ namespace Scene_LogicConstructor.Runtime
             logic.transform.SetSiblingIndex(siblingIndex);
             
             AfterConstruct(logic);
-
-            var callbacks = logic.GetComponents<ISceneConstruction>();
-            if (callbacks.Any() )foreach (var callback in callbacks) callback.OnConstruction();
         }
 
         public virtual void AfterConstruct(GameObject logic) { }
