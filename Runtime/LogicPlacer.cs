@@ -27,25 +27,27 @@ namespace Scene_LogicConstructor.Runtime
 
         private void RunCallbacks()
         {
-            if (!IsFirstCheck()) return; //This makes sure that callbacks for all ISceneConstruction will fire only once, even if there is multiple Placers
+            if (!IsFirstCheck()) return; //This makes sure that callbacks for all ISceneConstruction will fire only once and on the one scene, even if there is multiple Placers
 
-            var callbacks = FindInterfaces.Find<ISceneConstruction>();
+            var callbacks = FindInterfaces.Find<ISceneConstruction>(gameObject.scene);
             if (!callbacks.Any()) return;
             
             foreach (var callback in callbacks) callback.OnConstruction();
         }
         
 
-        private bool IsFirstCheck() => FindObjectsOfType<LogicPlacer>().Select(o => o.GetInstanceID()).Min() == GetInstanceID();
+        private bool IsFirstCheck() => FindObjectsOfType<LogicPlacer>()
+            .Where(o => o.gameObject.scene.name.Equals(gameObject.scene.name))
+            .Select(o => o.GetInstanceID()).Min() == GetInstanceID();
     }
     
     //https://discussions.unity.com/t/how-can-i-find-all-objects-that-have-a-script-that-implements-a-certain-interface/126233/5
     public static class FindInterfaces
     {
-        public static List<T> Find<T>()
+        public static List<T> Find<T>(Scene unityScene)
         {
             var interfaces      = new List<T>();
-            var rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+            var rootGameObjects = unityScene.GetRootGameObjects();
 
             foreach (var rootGameObject in rootGameObjects)
             {
